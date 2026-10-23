@@ -1,0 +1,2 @@
+import Link from "next/link";
+export default function NotFound() { return <section className="not-found container"><div className="crumb" aria-hidden="true">✦</div><p className="eyebrow">404 — NOT FOUND</p><h1>Oops! This page took a wrong turn.</h1><p className="lede">Let&apos;s get you back to something delicious.</p><div className="hero-actions"><Link className="button" href="/">Back to home</Link><Link className="text-link" href="/menu">Explore our menu</Link></div></section>; }

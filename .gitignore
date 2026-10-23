@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+
+# Next.js build output and static export
+.next/
+out/
+
+# Test output and generated visual captures
+coverage/
+playwright-report/
+test-results/
+visual-tests/actual/
+
+# Local source exports; the app uses the optimized WebP assets
+public/images/**/*.png
+
+# Local environment files
+.env
+.env.*
+!.env.example
+
+# Local process logs
+*.log
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.vscode/
