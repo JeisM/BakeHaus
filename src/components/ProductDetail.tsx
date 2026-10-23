@@ -3,7 +3,7 @@
 import { FormEvent, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, Croissant, Send } from "lucide-react";
+import { ArrowLeft, CakeSlice, Croissant, Send } from "lucide-react";
 import { formatPHP, products, type Product, type ProductComment } from "@/data/products";
 
 export function ProductDetail({ product }: { product: Product }) {
@@ -30,7 +30,7 @@ export function ProductDetail({ product }: { product: Product }) {
   return <section className="section container product-detail-page">
     <Link href="/menu" className="text-link back-link"><ArrowLeft size={17} aria-hidden="true" /> Back to menu</Link>
     <div className="product-detail-layout">
-      <div className={`product-detail-art product-art--${product.tone}`}>{showProductImage && product.image ? <Image src={product.image} alt={product.name} fill priority sizes="(max-width: 800px) 100vw, 50vw" /> : <span>{product.name}</span>}</div>
+      <div className={`product-detail-art product-art--${product.tone}`}>{showProductImage && product.image ? <Image src={product.image} alt={product.name} fill priority sizes="(max-width: 800px) 100vw, 50vw" /> : <CakeSlice className="product-fallback-icon product-fallback-icon--large" aria-label={`${product.name} image unavailable`} />}</div>
       <div className="detail-panel">
         <p className="eyebrow">PRODUCT DETAILS</p>
         <p className="product-category">{product.category}</p>

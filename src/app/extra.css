@@ -7,6 +7,8 @@
 .status-pill { display: inline-block; border-radius: 999px; background: #fff2d9; color: #875115; padding: 4px 9px; font-size: .68rem; font-weight: 800; letter-spacing: .08em; }
 .product-art { position: relative; overflow: hidden; }
 .product-art img { object-fit: cover; }
+.product-fallback-icon { width: 48px; height: 48px; color: var(--navy); opacity: .72; }
+.product-fallback-icon--large { width: 92px; height: 92px; }
 .product-card { min-width: 0; }
 .product-body h3 { overflow-wrap: anywhere; }
 h1 { overflow-wrap: anywhere; }
