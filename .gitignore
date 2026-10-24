@@ -10,6 +10,7 @@ coverage/
 playwright-report/
 test-results/
 visual-tests/actual/
+/visual-check-*.png
 
 # Local source exports; the app uses the optimized WebP assets
 public/images/**/*.png
