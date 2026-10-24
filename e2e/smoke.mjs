@@ -26,6 +26,11 @@ try {
         await page.locator(".product-card").first().waitFor();
         assert.equal(await page.locator(".product-card img").count(), 30, "All menu items should have product photos");
       }
+      if (route === "/locations") {
+        await page.locator(".location-map-marker").first().waitFor();
+        assert.equal(await page.locator(".location-map-marker").count(), 3, "Location map should show three markers");
+        assert.equal(await page.locator(".location-select").count(), 3, "Location list should show three branches");
+      }
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth), width, `${route} should not overflow at ${width}px`);
       assert.equal(await page.locator("main h1").count(), 1, `${route} should have one page heading`);
       assert.doesNotMatch(await page.locator("main").innerText(), /\bdemo\b|illustrative|not delivered|reset.*refresh|static concept|presentation purposes/i, `${route} should keep disclosures in footer`);
@@ -78,6 +83,15 @@ try {
   await mobileNav.getByRole("link", { name: "About" }).click();
   await page.waitForURL("**/about");
   assert.equal(await mobileNav.getByRole("link", { name: "About" }).getAttribute("aria-current"), "page");
+  await mobileNav.getByRole("link", { name: "Locations" }).click();
+  await page.waitForURL("**/locations");
+  await page.locator(".location-map-marker").first().waitFor();
+  await page.locator(".location-select").first().click();
+  const locationDialog = page.getByRole("dialog");
+  await locationDialog.getByRole("heading", { name: "BakeHaus Riverbanks" }).waitFor();
+  assert.match(await locationDialog.getByRole("link", { name: /Open in Google Maps/ }).getAttribute("href"), /google\.com\/maps/);
+  await page.keyboard.press("Escape");
+  assert.equal(await locationDialog.isVisible(), false);
   await mobileNav.getByRole("link", { name: "Home" }).click();
   await page.waitForURL(baseUrl + "/");
   await page.locator(".category-shortcuts").getByRole("link", { name: "Cakes", exact: true }).click();
@@ -146,6 +160,7 @@ try {
   await page.waitForURL("**/menu/classic-croissant");
   await page.getByRole("heading", { name: "Classic Butter Croissant" }).waitFor();
   assert.equal(await mobileNav.locator("a.active").innerText(), "Menu");
+  assert.equal(Math.round((await page.getByRole("button", { name: "Post comment" }).boundingBox()).width), Math.round((await page.locator(".comment-form").boundingBox()).width), "Mobile comment Send button should span the form");
   await page.getByRole("button", { name: "Post comment" }).click();
   await page.getByText("Add your name and a comment before posting.").waitFor();
   await page.getByLabel("Your name").fill("Test Baker");
@@ -157,6 +172,10 @@ try {
   assert.equal(await page.getByText("Fresh from the test suite!").count(), 0);
 
   await page.goto(`${baseUrl}/contact`, { waitUntil: "networkidle" });
+  const contactFormBox = await page.locator(".contact form").boundingBox();
+  const contactButtonBox = await page.getByRole("button", { name: "Send message" }).boundingBox();
+  const contactFormPadding = await page.locator(".contact form").evaluate((element) => parseFloat(getComputedStyle(element).paddingLeft) + parseFloat(getComputedStyle(element).paddingRight));
+  assert(Math.abs(contactButtonBox.width - (contactFormBox.width - contactFormPadding)) <= 2, "Mobile contact Send button should span the form");
   await page.getByRole("button", { name: "Send message" }).click();
   await page.getByText("Please complete every field before submitting.").waitFor();
   await page.getByLabel("Name", { exact: true }).fill("Test Baker");
