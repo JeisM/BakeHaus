@@ -38,7 +38,7 @@ svg { flex-shrink: 0; }
 .site-header { position: sticky; top: 0; z-index: 20; background: rgba(244,247,255,.96); backdrop-filter: blur(14px); }
 .nav { height: 90px; display: flex; align-items: center; justify-content: space-between; gap: 28px; }
 .logo { display: inline-flex; align-items: center; gap: 7px; min-height: 44px; font-weight: 800; font-size: 27px; letter-spacing: -.065em; line-height: 1; white-space: nowrap; transition: font-size .35s cubic-bezier(.22,1,.36,1); }
-.logo-mark { display: block; width: 58px; height: auto; transition: width .35s cubic-bezier(.22,1,.36,1); }
+.logo-mark { display: block; width: 58px; height: auto; color: var(--orange); transition: width .35s cubic-bezier(.22,1,.36,1); }
 .logo .logo-accent { color: var(--orange); }
 .logo:is(:hover, :focus-visible) { font-size: 19px; }
 .logo:is(:hover, :focus-visible) .logo-mark { width: 112px; }
@@ -54,6 +54,9 @@ svg { flex-shrink: 0; }
 .button:hover { background: #155edb; transform: translateY(-2px); box-shadow: 0 5px 15px #1e71ff20; }
 .button-small { min-height: 44px; padding: 11px 23px; font-size: 12px; }
 .button-dark { background: var(--navy); }
+.menu-mark { display: block; width: 29px; height: 20px; color: white; transition: transform .2s ease; }
+.menu-cta:hover .menu-mark { transform: translateX(2px) rotate(-6deg); }
+.mobile-nav-icon .menu-mark { width: 32px; height: 24px; color: var(--orange); }
 .text-link { min-height: 44px; display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 700; text-decoration: underline; text-underline-offset: 6px; text-decoration-color: var(--blue); }
 .text-link:hover { color: var(--blue); }
 .eyebrow { margin: 0 0 14px; color: #c94317; text-transform: uppercase; letter-spacing: .13em; font-size: 12px; line-height: 1.5; font-weight: 800; }
