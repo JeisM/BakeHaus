@@ -45,7 +45,7 @@ export function ProductDetail({ product }: { product: Product }) {
         <form className="comment-form" onSubmit={submitComment}>
           <label>Your name<input name="name" autoComplete="name" placeholder="Your name" /></label>
           <label>Leave a comment<textarea name="comment" rows={3} placeholder="Share a little joy…" /></label>
-          <button className="button comment-submit" type="submit" aria-label="Post comment" title="Post comment"><Send size={20} aria-hidden="true" /></button>
+          <button className="button comment-submit" type="submit" aria-label="Post comment"><Send size={18} aria-hidden="true" /> Send</button>
           <p className="form-status" aria-live="polite">{status}</p>
         </form>
     </section>

@@ -197,7 +197,7 @@ h2 { font-size: clamp(30px, 3.5vw, 46px); }
 label { display: grid; gap: 8px; font-size: 13px; font-weight: 700; }
 input, textarea { min-width: 0; width: 100%; min-height: 46px; padding: 12px 14px; border: 1px solid #d5deef; border-radius: 12px; background: #fcfdff; color: var(--text); font-size: 14px; }
 textarea { resize: vertical; }
-.comment-form .comment-submit { grid-column: 2; justify-self: end; width: 48px; min-height: 48px; padding: 0; }
+.comment-form .comment-submit { grid-column: 2; justify-self: end; min-height: 48px; padding: 0 20px; }
 .comment-form .form-status { grid-column: 1 / -1; }
 .form-status { color: var(--muted); font-size: 13px; margin: 0; align-self: center; }
 .form-status:empty { display: none; }
